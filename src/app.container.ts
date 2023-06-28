@@ -1,11 +1,8 @@
 import { AppContainer } from "@expressots/core";
-import { AppModule } from "./app.module";
+import { TodoModule } from "./todo/todo.module";
 
 const appContainer = new AppContainer();
 
-const container = appContainer.create([
-    // Add your modules here
-    AppModule,
-]);
+const container = appContainer.create([TodoModule]);
 
 export { container };
