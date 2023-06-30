@@ -10,7 +10,7 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
 
 	protected get TODODB(): T[] {
 		return [...this.inMemoryDb.getToDoDb()] as T[];
-}
+	}
 
 	create(item: T): T | null {
 		const existingItem = this.TODODB.find((todo) => todo.id === item.id);
@@ -19,7 +19,7 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
 		}
 
 		this.inMemoryDb.getToDoDb().push(item);
-		return item;
+		return item || null;
 	}
 
 	delete(id: string): boolean {
@@ -30,8 +30,8 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
 		return {} as T
 	}
 
-	findAll(id: string): T[] | null {
-		return []
+	findAll(): T[] {
+		return this.TODODB
 	}
 
 	update(item: T): T | null {
