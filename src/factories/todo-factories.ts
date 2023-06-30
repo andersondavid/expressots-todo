@@ -20,6 +20,14 @@ class ToDoFactory implements IToDoFactory {
 
 		return todo || null;
 	}
+
+	findAll(): IToDoEntity[] {
+		const getTodos = this.todoRepository.findAll();
+		const response: IToDoEntity[] = []
+		getTodos.forEach(todo => { response.push({ id: todo.id, content: todo.content }) })
+
+		return this.todoRepository.findAll()
+	}
 }
 
 export { ToDoFactory }
