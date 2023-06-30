@@ -7,14 +7,10 @@ type ContentType = {
 	isComplete: boolean;
 }
 
-@provide(ToDo)
-class ToDo implements IEntity {
-	id: string;
+@provide(IToDoEntity)
+class IToDoEntity implements IEntity {
+	id!: string;
 	content!: ContentType[]
-
-	constructor(){
-		this.id = '0'
-	}
 }
 
-export { ToDo };
+export { IToDoEntity };
