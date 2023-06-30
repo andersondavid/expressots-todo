@@ -7,7 +7,7 @@ interface ITodoFindResponseDTO {
 	content:
 	{
 		id: string;
-		todoText: string;
+		textTodo: string;
 		isComplete: boolean;
 	}[],
 }

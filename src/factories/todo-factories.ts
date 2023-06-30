@@ -9,16 +9,7 @@ class ToDoFactory implements IToDoFactory {
 
 
 	find(id: string): IToDoEntity | null {
-		return {
-			id: '1',
-			content: [
-				{
-					id: '2',
-					textTodo: 'Ola',
-					isComplete: false
-				}
-			]
-		}
+		return this.todoRepository.find(id) || null;
 	}
 
 	create({ content }): IToDoEntity | null {

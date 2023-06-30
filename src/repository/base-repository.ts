@@ -27,7 +27,12 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
 	}
 
 	find(id: string): T | null {
-		return {} as T
+		const existingItem = this.TODODB.find((todo) => todo.id === id);
+		if (!existingItem) {
+			throw new Error(`Object with id ${id} don't exists`);
+		}
+
+		return existingItem
 	}
 
 	findAll(): T[] {
