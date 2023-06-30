@@ -1,5 +1,5 @@
 import { AppContainer } from "@expressots/core";
-import { TodoModule } from "./todo/todo.module";
+import { TodoModule } from "./useCases/todo.module";
 
 const appContainer = new AppContainer();
 
