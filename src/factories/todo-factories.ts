@@ -28,6 +28,12 @@ class ToDoFactory implements IToDoFactory {
 
 		return this.todoRepository.findAll()
 	}
+
+	update({ id, itemId, isComplete }) {
+		const updatedTodo = this.todoRepository.updateTodo({ id: String(id), itemId, isComplete })
+		return updatedTodo
+	}
+
 }
 
 export { ToDoFactory }
