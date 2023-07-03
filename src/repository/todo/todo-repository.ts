@@ -14,12 +14,19 @@ class ToDoRepository extends BaseRepository<IToDoEntity> {
 		itemId: string,
 		isComplete: boolean,
 	}): IToDoEntity | null {
+		
 		const existingItem = this.TODODB.find((todo) => todo.id == id);
+		const existingContentItemIndex = existingItem?.content.findIndex((task) => task.id == itemId);
+		
+		if (existingItem && existingContentItemIndex !== undefined && existingContentItemIndex >= 0) {
+			console.log(existingItem.content[existingContentItemIndex]);
+			
+			existingItem.content[existingContentItemIndex].isComplete = isComplete
 
-		if (existingItem && existingItem.content[itemId]) {
-			existingItem.content[itemId].isComplete = isComplete
-		} else {
-			throw new Error(`Object with id ${id} don't exists`);
+		} else if (!existingItem) {
+			throw new Error(`Object (todo) with id ${id} don't exists`);
+		} else if (!existingContentItemIndex){
+			throw new Error(`Object (task) with id ${itemId} don't exists`);
 		}
 
 
