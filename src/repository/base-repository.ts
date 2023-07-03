@@ -1,11 +1,11 @@
 import { inject } from "inversify";
 import { IBaseRepository } from "./base-repository.interface";
 import { InMemoryDb } from "../provider/in-memory-db/in-memory-db.provider";
-import { IEntity } from "../entities/base.entity";
 import { provide } from "inversify-binding-decorators";
+import { IToDoEntity } from "../entities/todo.entity";
 
 @provide(BaseRepository)
-class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
+class BaseRepository<T extends IToDoEntity> implements IBaseRepository<T> {
 	@inject(InMemoryDb) private inMemoryDb!: InMemoryDb;
 
 	protected get TODODB(): T[] {
@@ -42,6 +42,7 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
 	update(item: T): T | null {
 		return item
 	}
+
 }
 
 export { BaseRepository }
