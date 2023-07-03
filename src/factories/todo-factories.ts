@@ -15,7 +15,10 @@ class ToDoFactory implements IToDoFactory {
 	create({ content }): IToDoEntity | null {
 		const newTodo = new IToDoEntity()
 		newTodo.id = this.todoRepository.findAll()?.length.toString()
-		newTodo.content = content
+		const newContent = content.map((contentItem, index: number) => {
+			return { ...contentItem, id: String(index) }
+		})
+		newTodo.content = newContent
 		const todo = this.todoRepository.create(newTodo)
 
 		return todo || null;
