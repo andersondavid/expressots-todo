@@ -30,7 +30,7 @@ class ToDoFactory implements IToDoFactory {
 	}
 
 	update({ id, itemId, isComplete }) {
-		const updatedTodo = this.todoRepository.updateTodo({ id: String(id), itemId, isComplete })
+		const updatedTodo = this.todoRepository.updateTodo({ id: String(id), itemId: String(itemId), isComplete })
 		return updatedTodo
 	}
 
