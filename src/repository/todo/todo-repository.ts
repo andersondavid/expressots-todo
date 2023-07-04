@@ -28,11 +28,7 @@ class ToDoRepository extends BaseRepository<IToDoEntity> {
 		} else if (!existingContentItemIndex){
 			throw new Error(`Object (task) with id ${itemId} don't exists`);
 		}
-
-
-		console.log(existingItem);
-
-
+		
 		return existingItem
 	}
 }

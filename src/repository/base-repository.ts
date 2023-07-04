@@ -23,7 +23,14 @@ class BaseRepository<T extends IToDoEntity> implements IBaseRepository<T> {
 	}
 
 	delete(id: string): boolean {
-		return true
+		const db = this.inMemoryDb.getToDoDb();
+		const index: number = db.findIndex((item) => item.id === id);
+
+		if (index !== -1) {
+				db.splice(index, 1);
+				return true;
+		}
+		return false;
 	}
 
 	find(id: string): T | null {
