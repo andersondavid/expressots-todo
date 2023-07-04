@@ -32,9 +32,13 @@ class ToDoFactory implements IToDoFactory {
 		return this.todoRepository.findAll()
 	}
 
-	update({ id, itemId, isComplete }) {
+	update({ id, itemId, isComplete }): IToDoEntity | null {
 		const updatedTodo = this.todoRepository.updateTodo({ id: String(id), itemId: String(itemId), isComplete })
 		return updatedTodo
+	}
+
+	delete(id: string): boolean {
+		return this.todoRepository.delete(String(id))
 	}
 
 }

@@ -5,6 +5,7 @@ interface IToDoFactory {
 	create(todo: { id: string, content: any }): IToDoEntity | null;
 	findAll(): IToDoEntity[];
 	update(todo: { id: string, itemId: string, isComplete: boolean }): IToDoEntity | null;
+	delete(id: string): boolean
 }
 
 export { IToDoFactory }
